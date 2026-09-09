@@ -624,7 +624,10 @@ a:hover {
   .melt-bg i,
   .drip i,
   .drip::before,
-  .nav-icon {
+  .nav-icon,
+  .contact-card,
+  .contact-icon,
+  .contact-go {
     transition: none;
   }
   .soul,
@@ -822,10 +825,81 @@ a:hover {
   list-style: none;
   padding: 0;
   margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 14px;
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 18px;
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(10, 17, 32, 0.55);
+  color: var(--text);
+  text-decoration: none;
+  transition: border-color 0.25s ease, background 0.25s ease,
+    transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.contact-card.is-static {
+  cursor: default;
+}
+
+a.contact-card:hover,
+a.contact-card:focus-visible {
+  text-decoration: none;
+  border-color: var(--accent);
+  background: rgba(14, 26, 48, 0.8);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.35);
+}
+
+.contact-icon {
+  flex: none;
+  width: 26px;
+  height: 26px;
+  fill: var(--accent);
+  transition: fill 0.25s ease, transform 0.25s ease;
+}
+
+a.contact-card:hover .contact-icon {
+  fill: var(--accent-2);
+  transform: scale(1.12);
+}
+
+.contact-body {
   display: flex;
   flex-direction: column;
-  gap: 12px;
-  font-size: 1.05rem;
+  gap: 2px;
+  min-width: 0;
+}
+
+.contact-label {
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.contact-hint {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+.contact-go {
+  margin-left: auto;
+  color: var(--accent);
+  opacity: 0;
+  transform: translateX(-6px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+a.contact-card:hover .contact-go,
+a.contact-card:focus-visible .contact-go {
+  opacity: 1;
+  transform: translateX(0);
 }
 
 /* Footer */
